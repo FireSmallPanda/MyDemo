@@ -1,0 +1,196 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>网格</title>
+<link rel="stylesheet" href="assets/css/amazeui.min.css">
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="assets/ie8/jquery.min.js"></script>
+<script src="assets/ie8/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+</head>
+<script src="assets/js/amazeui.min.js"></script>
+<script  type="text/javascript" >
+</script>
+<style style="css/style">
+   
+</style>
+
+<body>
+    <p>小组件</p>
+	<span class="am-badge">1</span>
+	<span class="am-badge am-badge-primary">2</span>
+	<span class="am-badge am-badge-secondary">3</span>
+	<span class="am-badge am-badge-success">4</span>
+	<span class="am-badge am-badge-warning">5</span>
+	<span class="am-badge am-badge-danger">6</span>
+	<span class="am-badge am-badge-success">Allmobilize</span>
+	<br>
+	<a class="am-badge am-badge-primary">五星卖家</a>
+	<a class="am-badge am-badge-secondary">Secondary</a>
+	<a class="am-badge am-badge-success">Success</a>
+	<a class="am-badge am-badge-warning">Warning</a>
+	<a class="am-badge am-badge-danger">Danger</a>
+
+
+    <p>面包屑导航</p>
+    <ol class="am-breadcrumb">
+		<li><a href="#" class="am-icon-home">首页</a></li>
+		<li><a href="#">分类</a></li>
+		<li class="am-active">内容</li>
+    </ol>
+	<p>按钮组</p>
+	<div class="am-btn-group" data-am-button>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="radio" name="options" id="option1"> 正常
+                </label>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="radio" name="options" id="option2"> 待审核
+                </label>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="radio" name="options" id="option3"> 不显示
+                </label>
+     </div>
+     
+     <p>多选按钮组</p>
+     <div class="am-btn-group" data-am-button>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="checkbox"> 允许评论
+                </label>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="checkbox"> 置顶
+                </label>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="checkbox"> 推荐
+                </label>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="checkbox"> 热门
+                </label>
+                <label class="am-btn am-btn-default am-btn-xs">
+                  <input type="checkbox"> 轮播图
+                </label>
+     </div>
+     
+     <p>评论容器</p>
+     <article class="am-comment"> <!-- 评论容器 -->
+          <a href="">
+            <img class="am-comment-avatar" alt=""/> <!-- 评论者头像 -->
+          </a>
+        
+          <div class="am-comment-main" > <!-- 评论内容容器 -->
+            <header class="am-comment-hd">
+              <!--<h3 class="am-comment-title">评论标题</h3>-->
+              <div class="am-comment-meta"> <!-- 评论元数据 -->
+                <a href="#link-to-user" class="am-comment-author">大旺</a> <!-- 评论者 -->
+                评论于 <time datetime="">2014-5-5</time>
+              </div>
+            </header>        
+            <div class="am-comment-bd">我是一个美男子哦！</div> <!-- 评论内容 -->
+          </div>
+    </article>
+    <p>评论BIG</p>
+    <article class="am-comment">
+      <a href="#link-to-user-home">
+        <img src="" alt="" class="am-comment-avatar" width="48" height="48"/>
+      </a>    
+      <div class="am-comment-main">
+        <header class="am-comment-hd">
+          <!--<h3 class="am-comment-title">评论标题</h3>-->
+          <div class="am-comment-meta">
+            <a href="#link-to-user" class="am-comment-author">大头儿子</a>
+            评论于 <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
+          </div>
+        </header>
+    
+        <div class="am-comment-bd">
+          最近家庭矛盾愈演愈烈不知道怎么办？
+          <blockquote>妈：我打算在下个月和老王结婚。</blockquote>
+          <blockquote>爸：我早上洗头的时候发现水是绿的。</blockquote>
+        </div>  
+      </div>
+  </article>
+  
+  <p>一人多评</p>
+  <ul class="am-comments-list am-comments-list-flip">
+      <li class="am-comment">
+          <a href="">
+            <img class="am-comment-avatar" alt=""/> <!-- 评论者头像 -->
+          </a>       
+          <div class="am-comment-main"> <!-- 评论内容容器 -->
+            <header class="am-comment-hd">
+              <!--<h3 class="am-comment-title">评论标题</h3>-->
+              <div class="am-comment-meta"> <!-- 评论元数据 -->
+                <a href="#link-to-user" class="am-comment-author">大旺</a> <!-- 评论者 -->
+                评论于 <time datetime="">2014-5-5</time>
+              </div>
+            </header>        
+            <div class="am-comment-bd">哇塞，沙发！</div> <!-- 评论内容 -->
+          </div>
+      </li>    
+      <li class="am-comment ">
+        <a href="">
+            <img class="am-comment-avatar" alt=""/> <!-- 评论者头像 -->
+          </a>
+        
+          <div class="am-comment-main"> <!-- 评论内容容器 -->
+            <header class="am-comment-hd">
+              <!--<h3 class="am-comment-title">评论标题</h3>-->
+              <div class="am-comment-meta"> <!-- 评论元数据 -->
+                <a href="#link-to-user" class="am-comment-author">大旺</a> <!-- 评论者 -->
+                评论于 <time datetime="">2014-5-6</time>
+              </div>
+            </header>        
+            <div class="am-comment-bd">这贴沉了！</div> <!-- 评论内容 -->
+          </div>
+      </li>
+      <li class="am-comment am-comment-warning am-comment-flip">
+        <a href="">
+            <img class="am-comment-avatar" alt=""/> <!-- 评论者头像 -->
+          </a>
+        
+          <div class="am-comment-main"> <!-- 评论内容容器 -->
+            <header class="am-comment-hd">
+              <!--<h3 class="am-comment-title">评论标题</h3>-->
+              <div class="am-comment-meta"> <!-- 评论元数据 -->
+                <a href="#link-to-user" class="am-comment-author">小萌</a> <!-- 评论者 -->
+                评论于 <time datetime="">2014-5-7</time>
+              </div>
+            </header>        
+            <div class="am-comment-bd">楼上的哥哥要服务不？</div> <!-- 评论内容 -->
+          </div>
+      </li>     
+  </ul>
+  
+  <p>输入框组</p>
+  <div class="am-input-group">
+    <div class="am-g am-g-collapse">
+      <div class="am-u-sm-4">      
+          <select   data-am-selected="{btnWidth: '110px'}">
+            <option value="1">中国大陆</option>
+            <option value="1">香港</option>
+            <option value="1">美国</option>
+          </select>
+	  </div>
+      <div class="am-u-sm-8">
+    	<input type="text" class="am-form-field" placeholder="Password">
+      </div>
+  </div>
+  <p>多选下拉</p>
+  <select multiple data-am-selected>
+      <option value="a">Apple</option>
+      <option value="b">Banana</option>
+      <option value="o">Orange</option>
+      <option value="m">Mango</option>
+  </select>
+  
+<p>end</p>
+</body>
+</html>
