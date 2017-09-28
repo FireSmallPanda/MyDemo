@@ -1,0 +1,10 @@
+server:
+##端口 yama配置
+ port: 8081
+ ##访问前缀
+ ##context-path: /lwh
+age: 25
+emp:
+  name: namws
+  age: 25
+  address: earch
