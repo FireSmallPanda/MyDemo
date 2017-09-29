@@ -2,7 +2,7 @@ server:
 ##端口 yama配置
  port: 8081
  ##访问前缀
- ##context-path: /lwh
+ context-path: /project
 age: 15
 emp:
   name: 默认值
