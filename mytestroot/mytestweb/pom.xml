@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>mytest-root</artifactId>
+        <groupId>cn.danywer</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>mytest-web</artifactId>
+    <packaging>war</packaging>
+    <groupId>cn.danywer</groupId>
+    <name>mytest-web Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!--添加start-->
+        <!--添加对mytest-model的依赖-->
+        <dependency>
+            <groupId>cn.danywer</groupId>
+            <artifactId>mytestmodel</artifactId>
+            <version>${project.version}</version>
+        </dependency> <!--添加对mytest-dao的依赖-->
+        <dependency>
+            <groupId>cn.danywer</groupId>
+            <artifactId>mytest-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency> <!--添加对mytest-service的依赖-->
+        <dependency>
+            <groupId>cn.danywer</groupId>
+            <artifactId>mytest-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.danywer</groupId>
+            <artifactId>mytestcommon</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <!--添加end-->
+
+
+    </dependencies>
+    <build>
+        <finalName>mytest-web</finalName>
+    </build>
+</project>

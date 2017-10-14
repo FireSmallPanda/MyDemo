@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.danywer.dao.log.LogDao">
+
+    <sql id="columns">
+        id, ip, user_id, action, action_time, status
+    </sql>
+    <sql id="vals">
+        #{id}, #{ip}, #{user_id}, #{action}, #{action_time}, #{status}
+    </sql>
+    <sql id="conds">
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
+        <if test="ip != null and ip != ''">
+            and ip = #{ip}
+        </if>
+        <if test="user_id != null and user_id != ''">
+            and user_id = #{user_id}
+        </if>
+        <if test="action != null and action != ''">
+            and action = #{action}
+        </if>
+        <if test="action_time != null">
+            and action_time = #{action_time}
+        </if>
+        <if test="status != null and status != ''">
+            and status = #{status}
+        </if>
+    </sql>
+
+    <insert id="insert" parameterType="cn.danywer.model.log.Log" useGeneratedKeys="true" keyProperty="id">
+        <selectKey keyProperty="id" resultType="Long" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into s_log (<include refid="columns" />)
+        values (<include refid="vals" />)
+    </insert>
+
+    <delete id="delete">
+        delete from s_log
+        where id=#{id}
+    </delete>
+
+    <update id="update">
+        update s_log
+        <set>
+            <if test="id != null and id != ''">
+                id=#{id},
+            </if>
+            <if test="ip != null and ip != ''">
+                ip=#{ip},
+            </if>
+            <if test="user_id != null and user_id != ''">
+                user_id=#{user_id},
+            </if>
+            <if test="action != null and action != ''">
+                action=#{action},
+            </if>
+            <if test="action_time != null">
+                action_time=#{action_time},
+            </if>
+            <if test="status != null and status != ''">
+                status=#{status}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <select id="select" resultType="cn.danywer.model.log.Log">
+        select
+        <include refid="columns"/>
+        from s_log
+        where 1=1
+        <include refid="conds" />
+    </select>
+</mapper>

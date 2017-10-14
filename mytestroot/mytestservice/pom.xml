@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mytest-root</artifactId>
+        <groupId>cn.danywer</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mytest-service</artifactId>
+    <!--添加start-->
+    <packaging>jar</packaging>
+    <dependencies> <!--添加对mytest-model的依赖-->
+        <dependency>
+            <groupId>cn.danywer</groupId>
+            <artifactId>mytestmodel</artifactId>
+            <version>${project.version}</version>
+        </dependency> <!--添加对mytest-dao的依赖-->
+        <dependency>
+            <groupId>cn.danywer</groupId>
+            <artifactId>mytest-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies> <!--添加end-->
+
+
+</project>
