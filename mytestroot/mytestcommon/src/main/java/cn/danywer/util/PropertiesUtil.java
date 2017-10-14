@@ -15,8 +15,9 @@ import org.springframework.core.io.Resource;
 public class PropertiesUtil {
     public static void main(String[] args) throws IOException {
 
-        System.out.println(load("error_CN.properties","SY0000"));
+        System.out.println(load("error_CN.properties", "SY0000"));
     }
+
     /**
      * 取配置文件的属性
      *
