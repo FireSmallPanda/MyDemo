@@ -20,13 +20,13 @@
         </div>
       </div>
     </div>
-    {{loginInfo.password}}
 
   </div>
 </template>
 
 <script>
   import ruleUtil from "@/common/js/ruleUtil"
+  import cookieUtil from "@/common/js/cookieUtil"
   export default{
     name: "login",
     data () {
@@ -51,11 +51,12 @@
           url: "api/user/userLogin.do",
           data: formVals,
         }).then((response) => {
-          if (response.state == true) {
-            alert("登录成功：");
+          if (response.state) {
+            // 保存登录信息
+            cookieUtil.save("loginUser",response.data.loginUser);
+            this.$router.push('/backstage');//跳转后端
           }else{
             alert(response.msg);
-
           }
         }).catch((response) => {
           console.log("发生错误");
