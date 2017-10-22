@@ -29,6 +29,7 @@ public class UserAction {
     private UserService userService;
     @Autowired
     private LogService logService;
+
     /**
      * 登录操作 （U1）
      *
@@ -39,7 +40,7 @@ public class UserAction {
     @ResponseBody
     public Result userLogin(User user, HttpServletRequest request) {
         // 搜索用户
-        User searchUser  = new User();
+        User searchUser = new User();
         searchUser.setAccount(user.getAccount());
         List<User> retnList = userService.findAllUser(searchUser);
         User loginUser = null;// 数据库存储的用户对象
@@ -72,15 +73,29 @@ public class UserAction {
 
         // 登录信息保存session
         HttpSession session = request.getSession();
-        session.setAttribute("loginUser",loginUser);
+        session.setAttribute("loginUser", loginUser);
 
 
         // 返回对象
         Map<String, Object> retn = new HashMap<String, Object>();
-        retn.put("loginUser",loginUser);
+        retn.put("loginUser", loginUser);
         // 返回正确
         return new Result("SY0000", retn);
 
 
+    }
+
+    /**
+     * U2登出
+     * @param request
+     * @return
+     */
+    @RequestMapping("userLoginOut")
+    @ResponseBody
+    public Result userLoginOut(HttpServletRequest request) {
+    // 清空session
+        HttpSession session = request.getSession();
+        session.setAttribute("loginUser", null);
+        return new Result("SY0000", null);
     }
 }
