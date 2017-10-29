@@ -69,7 +69,7 @@ export default {
         if (response.state) {
           // 保存登录信息
           cookieUtil.save("loginUser", response.data.loginUser);
-          this.$router.push('/backstage');//跳转后端
+          this.$router.push('/backHome');//跳转后端主页
         } else {
           alert(response.msg);
         }

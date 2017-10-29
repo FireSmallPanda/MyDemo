@@ -7,17 +7,18 @@ import cn.danywer.model.utils.ResultVo;
 import cn.danywer.service.log.LogService;
 import cn.danywer.service.user.UserService;
 import cn.danywer.util.CommonUtil;
+import cn.danywer.util.CookieUtil;
+import cn.danywer.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/user/")
@@ -36,7 +37,7 @@ public class UserAction {
      */
     @RequestMapping("userLogin")
     @ResponseBody
-    public Result userLogin(User user, HttpServletRequest request) {
+    public Result userLogin(User user, HttpServletRequest request, HttpServletResponse response) {
         // 搜索用户
         User searchUser = new User();
         searchUser.setAccount(user.getAccount());
@@ -67,12 +68,15 @@ public class UserAction {
         loginUser.setIp(CommonUtil.getIpAddr(request));
         loginUser.setLast_login_time(new Date());
         userService.updateUserById(loginUser);
+//生成登录uuid
+        String loginUuid = UUID.randomUUID().toString().replaceAll("-", "");
+        // 设置登录uuid 到cookie
+        CookieUtil.setCookie(response,"loginUuid",loginUuid);
+
 
 
         // 登录信息保存session
-        HttpSession session = request.getSession();
-        session.setAttribute("loginUser", loginUser);
-
+        RedisUtil.setRSession(loginUuid,"loginUser",loginUser);
 
         // 返回对象
         Map<String, Object> retn = new HashMap<String, Object>();
@@ -84,16 +88,17 @@ public class UserAction {
     }
 
     /**
-     * U2登出
+     *登出(U2)
      * @param request
      * @return
      */
     @RequestMapping("userLoginOut")
     @ResponseBody
-    public Result userLoginOut(HttpServletRequest request) {
-    // 清空session
-        HttpSession session = request.getSession();
-        session.setAttribute("loginUser", null);
+    public Result userLoginOut(HttpServletRequest request,HttpServletResponse response) {
+        String loginUuid = CookieUtil.getCookie(request,"loginUuid");
+        System.out.println("我们的cookie:"+loginUuid);
+        // 清空session
+        RedisUtil.delRSession(loginUuid);
         return new Result("SY0000", null);
     }
 }

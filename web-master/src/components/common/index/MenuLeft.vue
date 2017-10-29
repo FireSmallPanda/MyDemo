@@ -1,7 +1,9 @@
 <template>
     <div>
       <ul class="nav nav-pills nav-stacked">
-        <li  v-for="item in menuList"  role="presentation" :class="selectMenu==item.href?'active':''" @click="clickMenu(item.href)" ><router-link router-link :to="{ path: item.href }">{{item.text}}</router-link></li>
+        <li  v-for="item in menuList"  role="presentation" :class="selectMenu==item.href?'active':''" @click="clickMenu(item.href)" >
+            <router-link router-link :to="{ path: item.href }">{{item.text}}</router-link>
+        </li>
       </ul>
     </div>
 </template>
@@ -25,8 +27,10 @@
 
         },
         created(){
+            // 赋值菜单
             this.menuList = this.menuProp.menuList;
-
+            //赋值默认选中
+            this.selectMenu = this.menuProp.defaultSelect;
 
         }
     }
