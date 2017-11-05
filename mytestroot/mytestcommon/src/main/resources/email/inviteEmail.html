@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 将空格换成全角的空格，就可以保证html不会将空格过滤掉 -->
+<xml-body>
+<html>
+<head>
+</head>
+<style type="text/css">
+	*{margin: 0px; padding: 0px;}
+	body{font-family: "黑体"}
+	#head{ background-color: #fff2cc; text-align: center;}
+	#content{background-color: #d9d9d9;}
+	#foot{font-size: 12px ; text-align: center;}
+	#userAccount{font-size: 20px;color: red;}
+	#date{font-size: 20px;color: red;}
+	#code{font-size: 20px;color: red;}
+	#action{font-size: 20px;color: red;}
+</style>
+<body>
+	<div id="head">
+		<h3>激活邮件</h3>
+	</div>
+	<div id="content">
+		<span id="userAccount">{companyName}</span>于<span id="date">{date}</span>邀请了您参与该公司的<span id="action">{projectName}</span>项目！<br/>
+		是否接收邀请！<br/>
+		<img src="http://i1.mopimg.cn/img/dzh/2014-12/68/20141224155930845.jpg" width="80px" height="80px"/>PS:这是一封测试邮件！
+	</div>
+	<div id="foot">
+		本邮件有xx公司所有，企业邮箱：xxxx@xx.com
+	</div>
+</body>
+
+
+</html>
+</xml-body>

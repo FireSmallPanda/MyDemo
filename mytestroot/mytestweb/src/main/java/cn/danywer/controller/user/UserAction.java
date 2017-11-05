@@ -2,6 +2,7 @@ package cn.danywer.controller.user;
 
 import cn.danywer.model.log.Log;
 import cn.danywer.model.user.User;
+import cn.danywer.model.utils.RedisReq;
 import cn.danywer.model.utils.Result;
 import cn.danywer.model.utils.ResultVo;
 import cn.danywer.service.log.LogService;
@@ -71,12 +72,16 @@ public class UserAction {
 //生成登录uuid
         String loginUuid = UUID.randomUUID().toString().replaceAll("-", "");
         // 设置登录uuid 到cookie
-        CookieUtil.setCookie(response,"loginUuid",loginUuid);
+        CookieUtil.setCookie(response, "loginUuid", loginUuid);
 
 
 
         // 登录信息保存session
-        RedisUtil.setRSession(loginUuid,"loginUser",loginUser);
+        RedisReq redisReq = new RedisReq();
+        redisReq.setField("loginUser");
+        redisReq.setKey(loginUuid);
+        redisReq.setO(loginUser);
+        RedisUtil.setRSession(redisReq);
 
         // 返回对象
         Map<String, Object> retn = new HashMap<String, Object>();
@@ -88,17 +93,52 @@ public class UserAction {
     }
 
     /**
-     *登出(U2)
+     * 登出(U2)
+     *
      * @param request
      * @return
      */
     @RequestMapping("userLoginOut")
     @ResponseBody
-    public Result userLoginOut(HttpServletRequest request,HttpServletResponse response) {
-        String loginUuid = CookieUtil.getCookie(request,"loginUuid");
-        System.out.println("我们的cookie:"+loginUuid);
+    public Result userLoginOut(HttpServletRequest request, HttpServletResponse response) {
+        String loginUuid = CookieUtil.getCookie(request, "loginUuid");
         // 清空session
-        RedisUtil.delRSession(loginUuid);
+        RedisReq redisReq = new RedisReq();
+        redisReq.setKey(loginUuid);
+        RedisUtil.delRSession(redisReq);
         return new Result("SY0000", null);
     }
+
+    /**
+     * 注册（U3）
+     * @param user
+     * @return
+     */
+    @RequestMapping("register")
+    @ResponseBody
+    public Result register(User user,String smsCode){
+
+        // 判断验证码
+
+
+        // 搜索用户
+        User searchUser = new User();
+        searchUser.setAccount(user.getAccount());
+        List<User> retnList =   userService.findAllUser(searchUser);
+        if (retnList == null) {// 判断用户是否注册
+
+            return new Result("US0002"); // 该账号已经被使用
+           //  loginUser = retnList.get(0);// 将查询出来的用户赋值
+        } else {
+            // 赋值uuid
+            String rehisterUuid = UUID.randomUUID().toString().replaceAll("-", "");
+            user.setUuid(rehisterUuid);
+            user.setStatus("1"); // 默认可用
+            user.setJoin_date(new Date()); // 重置加入时间
+                userService.addUser(user);
+        }
+        return  null;
+
+    }
+
 }

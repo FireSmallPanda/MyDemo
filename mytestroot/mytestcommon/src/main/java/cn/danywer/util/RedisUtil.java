@@ -2,7 +2,9 @@ package cn.danywer.util;
 
 
 import cn.danywer.TestModel;
+import cn.danywer.model.utils.RedisReq;
 import com.alibaba.fastjson.JSON;
+import org.mortbay.util.StringUtil;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -19,20 +21,22 @@ public class RedisUtil {
     public static void main(String[] args) {
 
         Jedis jedis = getJedis();
-        // 权限认证
-        //jedis.auth("3158123000");
-        // 操作string
-        // updateString(jedis);
-        // 操作list
-        // testList(jedis);
-        // 操作set
-        // testSet(jedis);
-        // 操作hash
-        //testHash(jedis);
-        // 有序分数集
-        //testSortSet(jedis);
-        //测试设置session
-      /*  TestModel a = new TestModel();
+        /*
+        权限认证
+        jedis.auth("3158123000");
+        操作string
+        updateString(jedis);
+        操作list
+        testList(jedis);
+        操作set
+        testSet(jedis);
+        操作hash
+        testHash(jedis);
+        有序分数集
+        testSortSet(jedis);
+        测试设置session
+        */
+        /*  TestModel a = new TestModel();
         a.setId(11);
         setRSession("uuid", "loginInfo", a);*/
 
@@ -41,68 +45,83 @@ public class RedisUtil {
         b = (TestModel) getRSession("uuid", "loginInfo",b);
         System.out.println("取出的id为"+b.getId());*/
 
-        delRSession("uuid");
+        delRSession(null);
 
     }
 
     /**
      * 设置Rsession
      *
-     * @param userFlag 用户标识
-     * @param flag     存入项目
-     * @param saveItem 存入内容
+
      */
-    public static void setRSession(String userFlag, String flag, Object saveItem) {
+    public static void setRSession(RedisReq req) {
+        String timeFlag = "session_time";
+        // 获取时间flag
+        if(req.getTimeFlag()!=null&&!"".equals(req.getTimeFlag())){// 若为空则改变默认
+            timeFlag = req.getTimeFlag();
+
+        }
         // 得到过期时间
         int session_time = Integer.valueOf(PropertiesUtil.load("redis_config.properties", "session_time"));
         Jedis jedis = getJedis();
-        String strJson = JSON.toJSONString(saveItem);
-        jedis.hset(userFlag, flag, strJson);// 存入一个hash
-        jedis.expire(userFlag, session_time);// 设置过期时间
+        String strJson = JSON.toJSONString(req.getO());
+        jedis.hset(req.getKey(),req.getField(), strJson);// 存入一个hash
+        jedis.expire(req.getKey(), session_time);// 设置过期时间
         //关闭连接
         jedis.close();
     }
 
     /**
      * 取得session对象
-     * @param userFlag 用户标识
-     * @param flag 去得项目
-     * @param o  去得类型
+     *
      * @return
      */
-    public static Object getRSession(String userFlag, String flag,Object o) {
+    public static Object getRSession(RedisReq req) {
+
+        String timeFlag = "session_time";
+        // 获取时间flag
+        if(req.getTimeFlag()!=null&&!"".equals(req.getTimeFlag())){// 若为空则改变默认
+            timeFlag = req.getTimeFlag();
+
+        }
         // 得到过期时间
-        int session_time = Integer.valueOf(PropertiesUtil.load("redis_config.properties", "session_time"));
+        int session_time = Integer.valueOf(PropertiesUtil.load("redis_config.properties", timeFlag));
         Jedis jedis = getJedis();
         // 获取存入内容
-        String hashString = jedis.hget(userFlag, flag);
-        jedis.expire(userFlag, session_time);// 延长过期时间
+        String hashString = jedis.hget(req.getKey(), req.getField());
+        jedis.expire(req.getKey(), session_time);// 延长过期时间
         jedis.close();
-        logger.info("得到RedisClass:"+o.getClass());
-        return JSON.parseObject(hashString, o.getClass());
+        logger.info("得到RedisClass:"+req.getO().getClass());
+        return JSON.parseObject(hashString, req.getO().getClass());
 
     }
 
     /**
      * 保持resession
-     * @param userFlag 用户标识
+     *
      */
-   public static void holdRSession(String userFlag){
+   public static void holdRSession(RedisReq req){
+       String timeFlag = "session_time";
+       // 获取时间flag
+       if(req.getTimeFlag()!=null&&!"".equals(req.getTimeFlag())){// 若为空则改变默认
+           timeFlag = req.getTimeFlag();
+
+       }
         // 得到过期时间
         int session_time = Integer.valueOf(PropertiesUtil.load("redis_config.properties", "session_time"));
         Jedis jedis = getJedis();
-        jedis.expire(userFlag, session_time);// 延长过期时间
+        jedis.expire(req.getKey(), session_time);// 延长过期时间
         jedis.close();
     }
 
     /**
      * 清空resession
-     * @param userFlag
+     *
      */
-    public static void delRSession(String userFlag){
+    public static void delRSession(RedisReq req){
         // 得到过期时间
         Jedis jedis = getJedis();
-        jedis.del(userFlag);
+        jedis.del(req.getKey());
         jedis.close();
     }
     /**
