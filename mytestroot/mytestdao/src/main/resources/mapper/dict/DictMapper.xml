@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.danywer.dao.dict.DictDao">
+
+    <sql id="columns">
+        id, group_id, value, text, text_en, content, sort, status
+    </sql>
+    <sql id="vals">
+        #{id}, #{group_id}, #{value}, #{text}, #{text_en}, #{content}, #{sort}, #{status}
+    </sql>
+    <sql id="conds">
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
+        <if test="group_id != null and group_id != ''">
+            and group_id = #{group_id}
+        </if>
+        <if test="value != null and value != ''">
+            and value = #{value}
+        </if>
+        <if test="text != null and text != ''">
+            and text = #{text}
+        </if>
+        <if test="text_en != null and text_en != ''">
+            and text_en = #{text_en}
+        </if>
+        <if test="content != null and content != ''">
+            and content = #{content}
+        </if>
+        <if test="sort != null and sort != ''">
+            and sort = #{sort}
+        </if>
+        <if test="status != null and status != ''">
+            and status = #{status}
+        </if>
+    </sql>
+    <insert id="save" parameterType="cn.danywer.model.dict.Dict" useGeneratedKeys="true" keyProperty="id">
+        <selectKey keyProperty="id" resultType="Long" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into s_dict (<include refid="columns"/>)
+        values (<include refid="vals"/>)
+    </insert>
+    <delete id="delete">
+        delete from s_dict
+        where id=#{id}
+    </delete>
+    <update id="update">
+        update s_dict
+        <set>
+            <if test="id != null and id != ''">
+                id=#{id},
+            </if>
+            <if test="group_id != null and group_id != ''">
+                group_id=#{group_id},
+            </if>
+            <if test="value != null and value != ''">
+                value=#{value},
+            </if>
+            <if test="text != null and text != ''">
+                text=#{text},
+            </if>
+            <if test="text_en != null and text_en != ''">
+                text_en=#{text_en},
+            </if>
+            <if test="content != null and content != ''">
+                content=#{content},
+            </if>
+            <if test="sort != null and sort != ''">
+                sort=#{sort},
+            </if>
+            <if test="status != null and status != ''">
+                status=#{status}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <select id="select" resultType="cn.danywer.model.dict.Dict">
+        select
+        <include refid="columns"/>
+        from s_dict
+        where 1=1
+        <include refid="conds"/>
+    </select>
+    <!--获取全部字典-->
+    <select id="selectAll" resultType="cn.danywer.model.dict.Dict">
+        SELECT
+        a.group_id,a.`value`,a.text,a.text_en,a.content
+        FROM
+        s_dict AS a
+        LEFT JOIN s_catalog AS b ON a.group_id = b.id
+        WHERE b.`status` = 1 AND a.`status` = 1 AND b.type in ('system','xxm')
+        ORDER BY a.sort ASC
+    </select>
+
+</mapper>

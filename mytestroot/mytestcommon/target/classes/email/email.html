@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 将空格换成全角的空格，就可以保证html不会将空格过滤掉 -->
+<xml-body>
+<html>
+<head>
+</head>
+<style type="text/css">
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font-family: "黑体"
+}
+
+#head {
+	background-color: #fff2cc;
+	text-align: center;
+}
+
+#content {
+	background-color: #d9d9d9;
+}
+
+#foot {
+	font-size: 12px;
+	text-align: center;
+}
+
+#userAccount {
+	font-size: 20px;
+	color: red;
+}
+
+#date {
+	font-size: 20px;
+	color: red;
+}
+
+#code {
+	font-size: 20px;
+	color: red;
+}
+
+#action {
+	font-size: 20px;
+	color: red;
+}
+</style>
+<body>
+	<div id="head">
+		<h3>激活邮件</h3>
+	</div>
+	<div id="content">
+		动画梦工厂邮件激活 亲爱的 {userName}： 您好，这封信是由CGWas（动画梦工厂）发送的。
+
+		“您收到这封邮件，是由于在“动画梦工厂”进行了添加或修改邮箱，使用了这个邮箱地址。如果您并没有访问过“动画梦工厂”或没有进行上述操作，请忽略这封邮件。”
+
+		邮箱激活 如果您是“动画梦工厂”的会员，我们需要对您的邮箱有效性进行验证。 您的账号<span id="userAccount">{userAccount}</span>于<span
+			id="date">{date}</span>审请了<span id="action">邮箱绑定</span>，以下是您本次操作的验证码：<br />
+		<span id="code">{code}</span><br /> 若不是本人操作请尽快联系管理员！<br /> 
+	</div>
+	<div id="foot">CGWas（动画梦工厂）官方团队  https//www.cgwas.com </div>
+	<div id="foot">感谢您的访问，祝您使用愉快！ </div>
+	
+</body>
+
+
+</html>
+</xml-body>

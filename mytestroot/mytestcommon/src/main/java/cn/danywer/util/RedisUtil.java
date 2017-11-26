@@ -2,7 +2,7 @@ package cn.danywer.util;
 
 
 import cn.danywer.TestModel;
-import cn.danywer.model.utils.RedisReq;
+import cn.danywer.entity.RedisReq;
 import com.alibaba.fastjson.JSON;
 import org.mortbay.util.StringUtil;
 import redis.clients.jedis.Jedis;

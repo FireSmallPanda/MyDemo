@@ -2,10 +2,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.danywer.dao.user.UserDao">
     <sql id="columns">
-        id, account, password, ip, last_login_time, status
+        id, account, password, ip, last_login_time, status,uuid,join_date
     </sql>
     <sql id="vals">
-        #{id}, #{account}, #{password}, #{ip}, #{last_login_time}, #{status}
+        #{id}, #{account}, #{password}, #{ip}, #{last_login_time}, #{status},#{uuid},#{join_date}
     </sql>
     <sql id="conds">
         <if test="id != null and id != ''">

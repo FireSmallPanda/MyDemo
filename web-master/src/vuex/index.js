@@ -6,14 +6,14 @@ import Vuex from 'vuex';
 
 import demo from './modules/demo/demo';
 import common from './modules/common/common';
-
+import dict from './modules/common/dict';
 const test = "test";
 
 
 Vue.use(Vuex);
 const store = new Vuex.Store({
   modules: {
-    demo,common
+    demo,common,dict
   },
   state: {
     data: {

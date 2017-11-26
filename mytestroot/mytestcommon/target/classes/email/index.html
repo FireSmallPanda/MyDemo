@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+	function ajaxFileUpload() {
+		$.ajaxFileUpload({
+			url : 'http://localhost:8080/UploadFile.do',// servlet请求路径 
+			type : "post",
+			secureuri : false,
+			fileElementId : 'path',// 上传控件的id  
+			dataType : 'text',
+			success : function(data, status) {
+				alert(data);
+				$.ajax({
+					url : "../cgwas/sub_projectAction/create.json",
+					dataType : "json",
+					type : "post",
+					data :{
+						project_id:56,
+						is_parent_project:0,
+						total:"20",
+						project_status_id:1,
+						duration:"200分钟",
+						title:"大头儿子小头爸爸",
+						cover_path:"http://www.163.com",
+						introduce:"熊出没好看勒",
+						project_folder:"E:/Desktop/cgwas/Draf",
+						user_id:"1",
+						creater_name:"杨俊",
+						beginTime:"2017-05-27 08:08:08",
+						endTime:"2018-05-27 12:12:12",
+						directorIds:"3,4,5",
+						principalIds:"4,5,6",
+						screenwriterIds:"5,6,7"
+
+					      },
+					success : function(data) {
+						alert(data.message);
+					},
+					error : function() {
+						alert("error");
+					}
+				});
+			},
+			error : function(data, status, e) {
+				alert("123");
+				return false;
+			}
+		});
+	}
+// 	"13:建模,19:建模,20:建模,21:建模,17:动画,18:灯光,19:动画,20:灯光,21:动画,22:灯光"
+	$(function() {
+		$.ajax({
+			url : "../cgwas/modeltaskAction/getTaskByStageOrStatus.action",
+			dataType : "json",
+			type : "post",
+			data:{
+				stage:'已完成'
+			     },
+			success : function(data) {
+				alert(data.message);
+				console.log(data);
+			},
+			error : function() {
+				alert("error");
+			}
+		});
+	});
+</script>
+
+</head>
+<body>
+	<div>
+		<input type="file" id="path" name="file"
+			onchange="return ajaxFileUpload();">
+	</div>
+</body>
+</html>

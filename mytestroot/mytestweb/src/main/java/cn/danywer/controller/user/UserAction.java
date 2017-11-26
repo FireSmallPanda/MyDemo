@@ -1,10 +1,9 @@
 package cn.danywer.controller.user;
 
+import cn.danywer.entity.RedisReq;
 import cn.danywer.model.log.Log;
 import cn.danywer.model.user.User;
-import cn.danywer.model.utils.RedisReq;
 import cn.danywer.model.utils.Result;
-import cn.danywer.model.utils.ResultVo;
 import cn.danywer.service.log.LogService;
 import cn.danywer.service.user.UserService;
 import cn.danywer.util.CommonUtil;
@@ -15,10 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
@@ -69,7 +66,7 @@ public class UserAction {
         loginUser.setIp(CommonUtil.getIpAddr(request));
         loginUser.setLast_login_time(new Date());
         userService.updateUserById(loginUser);
-//生成登录uuid
+        //生成登录uuid
         String loginUuid = UUID.randomUUID().toString().replaceAll("-", "");
         // 设置登录uuid 到cookie
         CookieUtil.setCookie(response, "loginUuid", loginUuid);
