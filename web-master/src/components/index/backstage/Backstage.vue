@@ -27,7 +27,7 @@ export default {
         defaultSelect:"/backHome", // 默认选中
         menuList: [ // 菜单列表
           { text: "首页", href: "/backHome" ,select:true},
-          { text: "安全中心", href: "safeInfo" },
+          { text: "安全中心", href: "/safeCentrality" },
           { text: "退出登录", href: "/loginOut" }
         ]
       }

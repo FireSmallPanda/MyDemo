@@ -44,11 +44,11 @@ public class UserAction {
         if (retnList != null) {// 判断用户是否注册
             loginUser = retnList.get(0);// 将查询出来的用户赋值
         } else {
-            return new Result("US0001");
+            return new Result("US0003"); // 该账号不存在
         }
         if (!loginUser.getPassword().equals(user.getPassword())) { // 判断密码是否正确
 
-            return new Result("US0001");
+            return new Result("US0001"); // 密码或账号错误
         }
         // 去除查询到的密码
         loginUser.setPassword("");

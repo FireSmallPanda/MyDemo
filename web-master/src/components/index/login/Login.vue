@@ -87,8 +87,8 @@
               <input class="btn btn-primary loginBtn" type="button" value="注册" @click="regist">
             </div>
         </div>
+        
       </div>    
-
     </modal-window>
   </div>
 </template>
@@ -101,6 +101,7 @@ import ModalWindow from "@/components/common/ModalWindow"
 
 
 export default {
+  
   name: "login",
   data() {
     return {
@@ -253,49 +254,12 @@ export default {
   },
   components:{
       ModalWindow
-
   }
 
 }
 </script>
 
 <style scoped>
-.border {
-  border: 1px solid red;
-}
-#login-body{
-background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508434141913&di=fdd0b11e45603b8d12a6c238b71cee8b&imgtype=0&src=http%3A%2F%2Ffile06.16sucai.com%2F2016%2F0624%2F502158493606b5ebbaee7f5ace5c497c.jpg");
-padding-bottom: 1px;
-}
+@import "/static/css/login/login.css";
 
-.login-heard{
-     margin-top: 15%;
-    padding-top: 24px;
-    height: 0px;
-}
-
-.loginBox {
-  width: 30%;
-}
-.from-son{
- padding-top: 10px;
-}
-.row {
-}
-label {
-  padding-top: 5 px;
-}
-
-.loginBtn {
-  width: 7rem;
-}
-.lable-text{
-  font-size: 1.8rem;
-
-}
-.login-foot{
-  position:fixed; bottom:0; 
-  width: 100%;
-
-}
 </style>

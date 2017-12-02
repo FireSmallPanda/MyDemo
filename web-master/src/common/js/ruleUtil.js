@@ -9,17 +9,17 @@ var EMAIL  =/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/ // 邮
 var TEL  =/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/ // 手机号
 
 export default {
-  checkChinese (content) {
+  checkChinese (content) { // 检查中文
     return CHINESE.test(content);
   },
-  checkEnglish (content){
+  checkEnglish (content){ // 检查英文
     return ENGLISH.test(content);
   },
-  checkAccount(content){
+  checkAccount(content){ // 检查账号
     return ACCOUNT.test(content);
   },
 
-  checkPassword(content){
+  checkPassword(content){ // 检查密码
       if(PASSWORDQ.test(content)&&content.length>=6){
         return 3;
       }else if(PASSWORDZ.test(content)&&content.length>=6){
@@ -35,12 +35,12 @@ export default {
 
     return ACCOUNT.test(content);
   },
-  checkEmail(content){
+  checkEmail(content){//检查邮箱
 
     return EMAIL.test(content);
 
   },
-  checkTel(content){
+  checkTel(content){ // 检查电话
         return TEL.test(content);
     
   },
@@ -54,12 +54,12 @@ export default {
 
 
    getAge(date){
-  var   aDate=new   Date();
-  var   thisYear=aDate.getYear();
-  var brith=date;
-  if(!brith)return;//再加上其他判断
-  brith=brith.substr(0,4);
-  age=(thisYear-brith);
-  document.getElementById("date2").value=age;
-}
+    var   aDate=new   Date();
+    var   thisYear=aDate.getYear();
+    var brith=date;
+    if(!brith)return;//再加上其他判断
+    brith=brith.substr(0,4);
+    age=(thisYear-brith);
+    document.getElementById("date2").value=age;
+  }
 }

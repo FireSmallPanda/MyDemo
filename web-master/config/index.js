@@ -34,6 +34,13 @@ module.exports = {
         pathRewrite: { //需要rewrite重写的, 如果在服务器端做了处理则可以不要这段
           '^/api': ''
         }
+      },
+      '/pomsApi': {
+        target: 'http://localhost:8080/app',// http://localhost:3000/data   // http://192.168.16.211:80/TestSpringMVC
+        changeOrigin: true,
+        pathRewrite: { //需要rewrite重写的, 如果在服务器端做了处理则可以不要这段
+          '^/pomsApi': ''
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

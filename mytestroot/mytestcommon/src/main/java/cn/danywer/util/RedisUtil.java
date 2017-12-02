@@ -142,7 +142,7 @@ public class RedisUtil {
 
         // 可用连接实例的最大数目，默认值为8；
         // 如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
-        int MAX_ACTIVE = Integer.parseInt(PropertiesUtil.load("redis_config.properties", "max_active"));
+       int MAX_ACTIVE = Integer.parseInt(PropertiesUtil.load("redis_config.properties", "max_active"));
 
         // 控制一个pool最多有多少个状态为idle(空闲的)的jedis实例，默认值也是8。
         int MAX_IDLE = Integer.parseInt(PropertiesUtil.load("redis_config.properties", "max_idle"));
@@ -166,7 +166,7 @@ public class RedisUtil {
             if (jedisPool != null) {
                 Jedis resource = jedisPool.getResource();
                 // 关闭连接
-                jedisPool.close();
+               //  jedisPool.close();
                 return resource;
             } else {
                 return null;

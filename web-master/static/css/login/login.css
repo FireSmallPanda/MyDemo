@@ -1,0 +1,38 @@
+.border {
+    border: 1px solid red;
+  }
+  #login-body{
+  background-image: url("/ossImg/sc/index/timg.jpg");
+  padding-bottom: 1px;
+  }
+  
+  .login-heard{
+       margin-top: 15%;
+      padding-top: 24px;
+      height: 0px;
+  }
+  
+  .loginBox {
+    width: 30%;
+  }
+  .from-son{
+   padding-top: 10px;
+  }
+  .row {
+  }
+  label {
+    padding-top: 5 px;
+  }
+  
+  .loginBtn {
+    width: 7rem;
+  }
+  .lable-text{
+    font-size: 1.8rem;
+  
+  }
+  .login-foot{
+    position:fixed; bottom:0; 
+    width: 100%;
+  
+  }

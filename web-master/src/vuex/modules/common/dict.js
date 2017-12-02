@@ -8,11 +8,10 @@ import _ from 'lodash';
 Vue.use(Vuex);
 // action
 const getSystemDicts = "dict/getSystemDicts";
-
+const dict1 = "dict1";
 
 export default{
   state: {
-    bank_nums,
     dicts: [
       {value: "", text: ""}
     ], // 字典
@@ -26,8 +25,7 @@ export default{
     },
   },
   getters: {
-    getBankNums: state => state.bank_nums,
-    [dict1]: state => { // 性别
+    [dict1]: state => { // 登录类型
       return state.dicts.filter(item => item.group_id == "1");
     },
     
@@ -42,7 +40,7 @@ export default{
       }
       $.ajax({
         type: "post",
-        url: "api/app/system/loadAllDict.do",
+        url: "api/system/loadAllDict.do",
         data: {},
       }).then((response) => {
         if (response.state) {
