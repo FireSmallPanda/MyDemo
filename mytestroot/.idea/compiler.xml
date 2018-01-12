@@ -15,11 +15,11 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mytestcommon" target="1.7" />
-      <module name="mytestdao" target="1.7" />
-      <module name="mytestmodel" target="1.7" />
-      <module name="mytestroot" target="1.7" />
-      <module name="mytestservice" target="1.7" />
-      <module name="mytestweb" target="1.7" />
+      <module name="mytestdao" target="1.5" />
+      <module name="mytestmodel" target="1.5" />
+      <module name="mytestroot" target="1.5" />
+      <module name="mytestservice" target="1.6" />
+      <module name="mytestweb" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -138,4 +138,19 @@ public class CommonUtil {
 		return res;
 	}
 
+	/**
+	 * 获取页面大小
+	 * @param count
+	 * @param pageSize
+	 * @return
+	 */
+	public static Integer getPage(Long count,int pageSize) {
+		int iPageCount= Integer.parseInt(String.valueOf(count)) /pageSize ;
+		int mod=iPageCount %pageSize ;
+		if(mod>0){
+			iPageCount++;
+		}
+		return  iPageCount;
+	}
+
 }

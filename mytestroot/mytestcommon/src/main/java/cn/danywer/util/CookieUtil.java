@@ -15,6 +15,7 @@ public class CookieUtil {
     // 得到过期时间
         int session_time = Integer.valueOf(PropertiesUtil.load("redis_config.properties", "session_time"));
         Cookie cookie = new Cookie(key, value);
+
         cookie.setMaxAge(session_time);
         // 添加cookie
         response.addCookie(cookie);
@@ -25,11 +26,20 @@ public class CookieUtil {
      * @param request
      * @param key
      */
-    public static String getCookie(HttpServletRequest request,String key){
+    public static String getCookie(HttpServletRequest request, String key){
         Cookie[] cookies = request.getCookies();
+        System.out.print("conk------------------------------"+cookies.hashCode());
         for(Cookie cookie : cookies){
             if(cookie.getName().equals(key)){
+
+
                 String value = cookie.getValue();
+
+                if(value.indexOf("%")>-1){
+                    value =  UrlUtil.getURLDecoderString(value);
+                    value = value.replaceAll("\"","");
+                }
+
                 return value;
 
             }

@@ -79,12 +79,14 @@ public class UserAction {
         redisReq.setKey(loginUuid);
         redisReq.setO(loginUser);
         RedisUtil.setRSession(redisReq);
-
+      //   loginUser.setAccount(loginUuid);
         // 返回对象
         Map<String, Object> retn = new HashMap<String, Object>();
         retn.put("loginUser", loginUser);
+        retn.put("loginUuid", loginUuid); // 登录uuid
+
         // 返回正确
-        return new Result("SY0000", retn);
+        return  new Result("SY0000", retn);
 
 
     }

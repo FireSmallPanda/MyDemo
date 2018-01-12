@@ -32,12 +32,13 @@ export default{
   },
 
   actions: {
-    [getSystemDicts]({commit, state}){ // 获取字典
+    [getSystemDicts]({commit, state}){ 
       // 保存数据
       commit(getSystemDicts);
       if (state.dicts != null && state.dicts.length > 1) { // 如果已经有则不用请求后台
         return;
       }
+      // 获取字典（S1）
       $.ajax({
         type: "post",
         url: "api/system/loadAllDict.do",

@@ -73,4 +73,46 @@
         where 1=1
         <include refid="conds" />
     </select>
+
+    <!--根据条件搜索日志-->
+    <select id="selectByLog" resultType="cn.danywer.model.log.Log">
+        select
+        <include refid="columns"/>
+        from s_log
+        where 1=1
+        <if test="user_id != null and user_id != ''">
+            and user_id=#{user_id}
+        </if>
+        <if test="log.action != null and log.action != ''">
+          and  action=#{log.action}
+        </if>
+        <if  test="page.sortType=='DESC' and page.sortColumn !=null and page.sortColumn !='' ">
+            ORDER BY ${page.sortColumn} DESC
+        </if>
+        <if test="page.sortType!='DESC' and page.sortColumn !=null and page.sortColumn !='' ">
+            ORDER BY ${page.sortColumn} ASC
+        </if>
+        <if test="page.sortColumn ==null or page.sortColumn =='' ">
+            ORDER BY action_time DESC
+        </if>
+        <if test="page.start != null and page.pageSize !=null">
+            LIMIT #{page.start}, #{page.pageSize}
+        </if>
+
+    </select>
+    <!--根据条件搜索日志（数量）-->
+    <select id="selectByLogCount" resultType="java.lang.Long">
+        select
+        count(id)
+        from s_log
+        where 1=1
+        <if test="user_id != null and user_id != ''">
+            and user_id=#{user_id}
+        </if>
+        <if test="log.action != null and log.action != ''">
+            and  action=#{log.action}
+        </if>
+
+    </select>
+
 </mapper>
