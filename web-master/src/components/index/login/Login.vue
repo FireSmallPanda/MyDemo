@@ -10,13 +10,13 @@
         <div class="row">
           <div class="col-xs-10">
             <div class="form-group">
-              <div  class="col-xs-4 text-right lable-text">账号</div>
+              <div  class="col-xs-4 text-right lable-text">账号:</div>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="account" v-model="loginInfo.account" placeholder="请输入账号">
               </div>
             </div>
             <div class="form-group" >
-              <div  class="col-xs-4 text-right from-son lable-text">密码</div>
+              <div  class="col-xs-4 text-right from-son lable-text">密码:</div>
               <div class="col-xs-8 from-son">
                 <input type="password" class="form-control" id="password" v-model="loginInfo.password" placeholder="请输密码">
               </div>
