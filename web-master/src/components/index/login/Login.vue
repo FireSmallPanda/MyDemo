@@ -6,7 +6,7 @@
         <h4>登录</h4>
       </div>
       <div class="panel-body">
-        <div class="text-center">欢迎使用小熊猫VO</div>
+        <div class="text-center">欢迎使用小熊猫平台</div>
         <div class="row">
           <div class="col-xs-10">
             <div class="form-group">
@@ -107,8 +107,8 @@ export default {
     return {
       msg: '',
       loginInfo: { // 登录信息
-        account: "",
-        password: ""
+        account: "admin",  // 测试账号
+        password: "123456"
       },
       registModal:{ // 模态窗属性
         title:"注册",
@@ -160,7 +160,9 @@ export default {
         if (response.state) {
           // 保存登录信息
           cookieUtil.save("loginUser", response.data.loginUser);
-          this.$router.push('/backHome');//跳转后端主页
+          // 保存登录uuid
+          cookieUtil.save("loginUuid", response.data.loginUuid);
+           this.$router.push('/backHome');//跳转后端主页
         } else {
           alert(response.msg);
         }

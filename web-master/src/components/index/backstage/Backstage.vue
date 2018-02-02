@@ -22,13 +22,15 @@ export default {
   data() {
     return {
       msg: "",
-      loginUser: {},
+      loginUser: {}, // 登录用户信息
       menuProp: { // 菜单参数
         defaultSelect:"/backHome", // 默认选中
         menuList: [ // 菜单列表
           { text: "首页", href: "/backHome" ,select:true},
           { text: "安全中心", href: "/safeCentrality" },
+         //  { text: "个人设置", href: "/aa" },
           { text: "退出登录", href: "/loginOut" }
+          
         ]
       }
     };

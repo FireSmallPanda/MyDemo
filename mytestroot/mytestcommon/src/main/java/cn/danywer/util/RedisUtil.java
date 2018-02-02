@@ -40,12 +40,15 @@ public class RedisUtil {
         a.setId(11);
         setRSession("uuid", "loginInfo", a);*/
 
-     /*   TestModel b = new TestModel();
+       TestModel b = new TestModel();
+        RedisReq req = new RedisReq();
+        req.setKey("118ae73603984fd6bc67ab03700f23ba");
+        req.setField("loginUser");
+        req.setO(b);
+        b = (TestModel) getRSession(req);
+        System.out.println("取出的id为"+b.getId());
 
-        b = (TestModel) getRSession("uuid", "loginInfo",b);
-        System.out.println("取出的id为"+b.getId());*/
-
-        delRSession(null);
+      //   delRSession(null);
 
     }
 
