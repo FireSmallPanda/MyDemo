@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 @Controller
-@RequestMapping("/user/")
+@RequestMapping("/user")
 public class UserAction {
 
     @Autowired
@@ -33,7 +33,7 @@ public class UserAction {
      * @param user
      * @return
      */
-    @RequestMapping("userLogin")
+    @RequestMapping("/userLogin")
     @ResponseBody
     public Result userLogin(User user, HttpServletRequest request, HttpServletResponse response) {
         // 搜索用户
@@ -95,7 +95,7 @@ public class UserAction {
      * @param request
      * @return
      */
-    @RequestMapping("userLoginOut")
+    @RequestMapping("/userLoginOut")
     @ResponseBody
     public Result userLoginOut(HttpServletRequest request, HttpServletResponse response) {
         String loginUuid = CookieUtil.getCookie(request, "loginUuid");
@@ -111,7 +111,7 @@ public class UserAction {
      * @param user
      * @return
      */
-    @RequestMapping("register")
+    @RequestMapping("/register")
     @ResponseBody
     public Result register(User user,String smsCode){
 
