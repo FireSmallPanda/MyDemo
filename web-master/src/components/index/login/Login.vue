@@ -6,11 +6,11 @@
         <h4>登录</h4>
       </div>
       <div class="panel-body">
-        <div class="text-center">欢迎使用小熊猫平台</div>
+        <div class="text-center">欢迎使用小熊猫平台pz</div>
         <div class="row">
           <div class="col-xs-10">
             <div class="form-group">
-              <div  class="col-xs-4 text-right lable-text">账号(告诉你哦):</div>
+              <div  class="col-xs-4 text-right lable-text">账号</div>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="account" v-model="loginInfo.account" placeholder="请输入账号">
               </div>
