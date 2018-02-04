@@ -6,7 +6,7 @@
         <h4>登录</h4>
       </div>
       <div class="panel-body">
-        <div class="text-center">欢迎使用小熊猫平台pz</div>
+        <div class="text-center">欢迎使用小熊猫平台Master</div>
         <div class="row">
           <div class="col-xs-10">
             <div class="form-group">
