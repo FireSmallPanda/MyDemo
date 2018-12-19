@@ -6,6 +6,7 @@ spring:
     url: jdbc:mysql://qdm158906296.my3w.com:3306/qdm158906296_db
     username: qdm158906296
     password: qq1020529941
+    ## root lanmeng3263
   jpa:
       hibernate:
         ##自动建表去从 create 更新表保留原有数据 update
